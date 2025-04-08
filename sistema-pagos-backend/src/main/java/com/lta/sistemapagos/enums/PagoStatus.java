@@ -1,5 +1,5 @@
 package com.lta.sistemapagos.enums;
 
-public class PagoStatus {
-    
+public enum PagoStatus {
+    CREADO, VALIDADO, RECHAZADO
 }

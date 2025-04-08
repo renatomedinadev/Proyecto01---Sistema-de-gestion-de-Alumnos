@@ -1,5 +1,6 @@
 package com.lta.sistemapagos.enums;
 
-public class TypePago {
+public enum TypePago {
     
+    EFECTIVO, CHEQUE, TRANSFERENCIA, DEPOSITO
 }
