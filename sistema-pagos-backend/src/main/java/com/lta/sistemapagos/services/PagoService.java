@@ -77,4 +77,10 @@ public class PagoService {
          */
         return Files.readAllBytes(Path.of(URI.create(pago.getFile())));
     }
+
+    public Pago actualizarPagoPorStatus(PagoStatus status,Long id){
+        Pago pago = pagoRepository.findById(id).get();
+        pago.setStatus(status);
+        return pagoRepository.save(pago);
+    }
 }
