@@ -1,6 +1,7 @@
 package com.lta.sistemapagos.services;
 
 import java.io.IOException;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -65,4 +66,15 @@ public class PagoService {
         return pagoRepository.save(pago);
 
     }   
+
+    public byte[] getArchivoPorId(Long pagoId) throws IOException{
+        Pago pago = pagoRepository.findById(pagoId).get();
+        /*
+         - pago.getFile(): Obtiene la URI del archivo guardado
+         - URI.create(...): Convierte la cadena en un objeto URI
+         - Path.of(...): Convierte la URI en un Path
+         - Files.readAllBytes(): Lee el contenido del archivo y lo devuelve como un array de bytes
+         */
+        return Files.readAllBytes(Path.of(URI.create(pago.getFile())));
+    }
 }
